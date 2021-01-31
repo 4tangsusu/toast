@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>toast</title>
+        <style>
+            #btn {
+                color: white;
+                background-color: #AE00FF;
+                border: 0;
+                outline: 0;
+                border-radius: 7px;
+                font-size: 1rem;
+                padding: 5px;
+                cursor: pointer;
+                margin: 5px;
+                transition: 0.5s;
+            }
+            #btn:hover {
+                background-color: #CF67FF;
+            }
+            #pop {
+                opacity: 0;
+                display: block;
+                position: fixed;
+                align-content: center;
+                text-align: center;
+                color: white;
+                background-color: black;
+                box-shadow: black 0 0 10px;
+                padding: 10px 25px;
+                border-radius: 10px;
+                /* 토스트 중앙 정렬 */
+                right: 50%;
+                transform: translateX(50%);
+                /* 가장 위에 배치 */
+                top: 0;
+                /* 커서 선택 불가 */
+                user-select: none;
+                /* 움직이는 지속시간 */
+                transition: 0.3s;
+            }
+            #msg {
+                margin: 5px;
+            }
+            #input {
+                background-color: #ebebeb;
+                border: 0;
+                outline: 0;
+                border-radius: 5px;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <span id="pop"></span>
+        <div id="msg">
+            <span>토스트 내용:&nbsp;</span>
+            <input type="text" id="input" value="맛있는 토스트!">
+        </div>
+        <button id="btn" onclick="up()">토스트 띄우기</button>
+        <script>
+            let key = 0;
+            let pop = document.getElementById('pop');
+            function up() {
+                if (key == 0) {
+                    pop.innerHTML = document.getElementById('input').value;
+                    pop.style.opacity = 100;
+                    pop.style.top = '30px';
+                    key = 1;
+                } else {
+                    pop.style.opacity = 0;
+                    pop.style.top = 0;
+                    key = 0;
+                }
+            }
+        </script>
+    </body>
+</html>
